@@ -15,10 +15,10 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     Optional<UserEntity> findById(Long id);
 
-    @Query("select user from UserEntity user where user.role = 'STUDENT'")
+    @Query("select user from UserEntity user where user.role = com.psevdo00.projectExchange.enums.UserRoleEnum.STUDENT")
     List<UserEntity> findAllStudent();
 
-    @Query("select user from UserEntity user where user.role = 'PROFESSOR'")
+    @Query("select user from UserEntity user where user.role = com.psevdo00.projectExchange.enums.UserRoleEnum.PROFESSOR")
     List<UserEntity> findAllProfessor();
 
 }
