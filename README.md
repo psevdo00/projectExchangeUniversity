@@ -337,3 +337,54 @@ GET http://localhost:8080/api/project/createProject
     "id_project": 5
 }
 ```
+
+### 1.11 Обновить статус проекта
+**Endpoint**: `/updateStatusProject/{id}`  
+
+**Параметры**: `id (тип: Long)`
+
+**Пример запроса**:  
+`
+PATCH http://localhost:8080/api/project/updateStatusProject/1
+`
+
+**Пример ответа (200 ОК)**
+```json
+{
+    "message": "У проекта установлен статус Завершен!",
+    "status_completed": true
+}
+```
+или
+```json
+{
+    "message": "У проекта установлен статус Открыт!",
+    "status_completed": false
+}
+```
+
+## 2. Команды (URL: /command)
+
+### 2.1 Создание команды  
+**Endpoint**: `/createCommand/{user_id}`  
+
+**Параметры**: `user_id (тип: Long) - идентификатор пользователя, который создает команду`
+
+**Тело запроса**: 
+```json
+{
+    // Еще нет
+}
+```
+
+**Пример запроса**:  
+`
+GET http://localhost:8080/api/command/createCommand/1
+`
+
+**Пример ответа (200 ОК)**
+```json
+{
+  
+}
+```
