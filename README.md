@@ -373,7 +373,7 @@ PATCH http://localhost:8080/api/project/updateStatusProject/1
 **Тело запроса**: 
 ```json
 {
-    // Еще нет
+
 }
 ```
 
