@@ -9,6 +9,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.security.SecureRandom;
+import java.util.Base64;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig implements WebMvcConfigurer {
@@ -29,5 +32,7 @@ public class SecurityConfig implements WebMvcConfigurer {
         registry.addMapping("/**").allowedOrigins("").allowedMethods("*");
 
     }
+
+
 
 }

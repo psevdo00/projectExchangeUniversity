@@ -1,6 +1,11 @@
 package com.psevdo00.projectExchange.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.psevdo00.projectExchange.enums.TypeProjectEnum;
 import jakarta.persistence.*;
+
+import java.time.Year;
+import java.util.Set;
 
 @Entity
 public class ProjectEntity {
@@ -11,12 +16,25 @@ public class ProjectEntity {
 
     private String title;
     private String info;
+    private String subjectArea;
+    private String university;
+    private Year projectYear;
+    private TypeProjectEnum type;
 
     private Boolean flag_completed;
 
     @OneToOne
     @JoinColumn(name = "command_id")
     private CommandEntity command;
+
+    @ManyToMany
+    @JoinTable(
+            name = "project_tags", // имя таблицы связей
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    @JsonBackReference
+    private Set<TagTechnologyEntity> tags;
 
     public Long getId() {
         return id;
@@ -42,6 +60,38 @@ public class ProjectEntity {
         this.info = info;
     }
 
+    public String getSubjectArea() {
+        return subjectArea;
+    }
+
+    public void setSubjectArea(String subjectArea) {
+        this.subjectArea = subjectArea;
+    }
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
+
+    public Year getProjectYear() {
+        return projectYear;
+    }
+
+    public void setProjectYear(Year projectYear) {
+        this.projectYear = projectYear;
+    }
+
+    public TypeProjectEnum getType() {
+        return type;
+    }
+
+    public void setType(TypeProjectEnum type) {
+        this.type = type;
+    }
+
     public Boolean getFlag_completed() {
         return flag_completed;
     }
@@ -56,5 +106,13 @@ public class ProjectEntity {
 
     public void setCommand(CommandEntity command) {
         this.command = command;
+    }
+
+    public Set<TagTechnologyEntity> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<TagTechnologyEntity> tags) {
+        this.tags = tags;
     }
 }

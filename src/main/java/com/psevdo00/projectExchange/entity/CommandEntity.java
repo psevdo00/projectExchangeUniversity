@@ -13,6 +13,7 @@ public class CommandEntity {
     private Long id;
 
     private String commandName;
+    private String universityCourse;
 
     @OneToMany(mappedBy = "command", cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -35,6 +36,14 @@ public class CommandEntity {
 
     public void setCommandName(String commandName) {
         this.commandName = commandName;
+    }
+
+    public String getUniversityCourse() {
+        return universityCourse;
+    }
+
+    public void setUniversityCourse(String universityCourse) {
+        this.universityCourse = universityCourse;
     }
 
     public List<UserEntity> getStudents() {

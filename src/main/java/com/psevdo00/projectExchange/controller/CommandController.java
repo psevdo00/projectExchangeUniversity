@@ -6,6 +6,8 @@ import com.psevdo00.projectExchange.service.CommandService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.SecureRandom;
+import java.util.Base64;
 import java.util.Map;
 
 @RestController
