@@ -1,26 +1,31 @@
-package com.psevdo00.projectExchange.entity;
+package com.psevdo00.projectExchange.DTO.response;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.psevdo00.projectExchange.entity.ProjectEntity;
 import com.psevdo00.projectExchange.enums.UserRoleEnum;
-import jakarta.persistence.*;
 
-@Entity
-public class UserEntity {
+import java.util.List;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProfessorDTO {
+
     private Long id;
-
-    @Column(unique = true)
     private String username;
     private String firstName;
     private String familyName;
     private String middleName;
-
-    @Column(unique = true)
     private String email;
-
+    private List<ProjectEntity> projects;
     private UserRoleEnum role;
+
+    public ProfessorDTO(Long id, String username, String firstName, String familyName, String middleName, String email, List<ProjectEntity> projects, UserRoleEnum role) {
+        this.id = id;
+        this.username = username;
+        this.firstName = firstName;
+        this.familyName = familyName;
+        this.middleName = middleName;
+        this.email = email;
+        this.projects = projects;
+        this.role = role;
+    }
 
     public Long getId() {
         return id;
@@ -68,6 +73,14 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<ProjectEntity> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<ProjectEntity> projects) {
+        this.projects = projects;
     }
 
     public UserRoleEnum getRole() {

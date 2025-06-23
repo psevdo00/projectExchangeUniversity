@@ -7,6 +7,7 @@ import com.psevdo00.projectExchange.entity.CommandEntity;
 import com.psevdo00.projectExchange.entity.ProjectEntity;
 import com.psevdo00.projectExchange.entity.TagTechnologyEntity;
 import com.psevdo00.projectExchange.enums.TypeProjectEnum;
+import com.psevdo00.projectExchange.repository.CommandRepository;
 import com.psevdo00.projectExchange.repository.ProjectRepository;
 import com.psevdo00.projectExchange.repository.TagTechnologyRepository;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,12 @@ import java.util.*;
 public class ProjectService {
 
     private final ProjectRepository repository;
-    private final CommandService commandService;
+    private final CommandRepository commandRepository;
     private final TagTechnologyRepository tagRepository;
 
-    public ProjectService(ProjectRepository repository, CommandService commandService, TagTechnologyRepository tagRepository) {
+    public ProjectService(ProjectRepository repository, CommandRepository commandRepository, TagTechnologyRepository tagRepository) {
         this.repository = repository;
-        this.commandService = commandService;
+        this.commandRepository = commandRepository;
         this.tagRepository = tagRepository;
     }
 
@@ -106,7 +107,7 @@ public class ProjectService {
         Long project_id = dto.getProject_id();
 
         ProjectEntity project = repository.findById(project_id).get();
-        CommandEntity command = commandService.findById(command_id);
+        CommandEntity command = commandRepository.findById(command_id).get();
 
         project.setCommand(command);
 
@@ -117,6 +118,12 @@ public class ProjectService {
     public ProjectEntity findById(Long id){
 
         return repository.findById(id).get();
+
+    }
+
+    public List<ProjectEntity> findAllByProfessor(Long id){
+
+        return repository.findAllByProfessor(id);
 
     }
 

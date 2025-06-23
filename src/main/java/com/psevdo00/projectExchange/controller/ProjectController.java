@@ -7,7 +7,6 @@ import com.psevdo00.projectExchange.DTO.request.TagDTO;
 import com.psevdo00.projectExchange.entity.ProjectEntity;
 import com.psevdo00.projectExchange.enums.TypeProjectEnum;
 import com.psevdo00.projectExchange.service.ProjectService;
-import org.springframework.data.repository.support.Repositories;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +33,14 @@ public class ProjectController {
                 "message", "Создание проекта прошло успешно!",
                 "id_project", id_project
         ));
+
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity test(){
+
+        return ResponseEntity.ok("Все ок");
+
 
     }
 

@@ -33,4 +33,7 @@ public interface ProjectRepository extends JpaRepository<ProjectEntity, Long> {
 
     List<ProjectEntity> findByType(TypeProjectEnum type);
 
+    @Query("select p from ProjectEntity p join ProfessorEntity pr on p.professor.userId = pr.userId where pr.userId = :id")
+    List<ProjectEntity> findAllByProfessor(@Param("id") Long id);
+
 }

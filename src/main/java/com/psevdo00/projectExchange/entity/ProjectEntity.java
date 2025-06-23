@@ -1,6 +1,7 @@
 package com.psevdo00.projectExchange.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.psevdo00.projectExchange.enums.TypeProjectEnum;
 import jakarta.persistence.*;
 
@@ -26,6 +27,11 @@ public class ProjectEntity {
     @OneToOne
     @JoinColumn(name = "command_id")
     private CommandEntity command;
+
+    @ManyToOne
+    @JsonManagedReference
+    @JoinColumn(name = "professor_id")
+    private ProfessorEntity professor;
 
     @ManyToMany
     @JoinTable(
@@ -114,5 +120,13 @@ public class ProjectEntity {
 
     public void setTags(Set<TagTechnologyEntity> tags) {
         this.tags = tags;
+    }
+
+    public ProfessorEntity getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(ProfessorEntity professor) {
+        this.professor = professor;
     }
 }

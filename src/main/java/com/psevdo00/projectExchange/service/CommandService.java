@@ -1,8 +1,11 @@
 package com.psevdo00.projectExchange.service;
 
+import com.psevdo00.projectExchange.DTO.request.CreateCommandDTO;
 import com.psevdo00.projectExchange.DTO.request.SelectProjectDTO;
+import com.psevdo00.projectExchange.DTO.response.StudentDTO;
 import com.psevdo00.projectExchange.entity.CommandEntity;
 import com.psevdo00.projectExchange.entity.ProjectEntity;
+import com.psevdo00.projectExchange.entity.StudentEntity;
 import com.psevdo00.projectExchange.entity.UserEntity;
 import com.psevdo00.projectExchange.repository.CommandRepository;
 import org.springframework.stereotype.Service;
@@ -22,15 +25,19 @@ public class CommandService {
         this.userService = userService;
     }
 
-    public void createCommand(CommandEntity command, Long user_id){
+    public void createCommand(CreateCommandDTO commandDTO, Long user_id){
 
         userService.updateRoleStudentToCaptain(user_id);
 
-        UserEntity userCaptain = userService.findById(user_id);
+        StudentEntity userCaptain = userService.findStudentById(user_id);
 
-        List<UserEntity> users = new ArrayList<>();
+        List<StudentEntity> users = new ArrayList<>();
         users.add(userCaptain);
 
+        CommandEntity command = new CommandEntity();
+
+        command.setCommandName(commandDTO.getCommandName());
+        command.setUniversityCourse(commandDTO.getUniversityCourse());
         command.setStudents(users);
         command.setProject(null);
 

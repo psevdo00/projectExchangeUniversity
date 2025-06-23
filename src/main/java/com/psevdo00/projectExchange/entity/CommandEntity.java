@@ -17,7 +17,7 @@ public class CommandEntity {
 
     @OneToMany(mappedBy = "command", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<UserEntity> students;
+    private List<StudentEntity> students;
 
     @OneToOne(mappedBy = "command", cascade = CascadeType.ALL)
     private ProjectEntity project;
@@ -46,11 +46,11 @@ public class CommandEntity {
         this.universityCourse = universityCourse;
     }
 
-    public List<UserEntity> getStudents() {
+    public List<StudentEntity> getStudents() {
         return students;
     }
 
-    public void setStudents(List<UserEntity> students) {
+    public void setStudents(List<StudentEntity> students) {
         this.students = students;
     }
 

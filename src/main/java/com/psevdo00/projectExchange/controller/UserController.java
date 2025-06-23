@@ -1,5 +1,9 @@
 package com.psevdo00.projectExchange.controller;
 
+import com.psevdo00.projectExchange.DTO.response.ProfessorDTO;
+import com.psevdo00.projectExchange.DTO.response.StudentDTO;
+import com.psevdo00.projectExchange.entity.ProfessorEntity;
+import com.psevdo00.projectExchange.entity.StudentEntity;
 import com.psevdo00.projectExchange.entity.UserEntity;
 import com.psevdo00.projectExchange.service.UserService;
 import jakarta.validation.Valid;
@@ -30,14 +34,26 @@ public class UserController {
 
     }
 
-    @GetMapping("/findUserById/{id}")
-    public ResponseEntity findById(Long id){
+    @GetMapping("/findStudentById/{id}")
+    public ResponseEntity findStudentById(@PathVariable Long id){
 
-        UserEntity user = service.findById(id);
+        StudentDTO student = service.findStudentDtoById(id);
 
         return ResponseEntity.ok(Map.of(
                 "message", "Поиск прошел успешно!",
-                "entity", user
+                "entity", student
+        ));
+
+    }
+
+    @GetMapping("/findProfessorById/{id}")
+    public ResponseEntity findProfessorById(@PathVariable Long id){
+
+        ProfessorDTO professor = service.findProfessorDtoById(id);
+
+        return ResponseEntity.ok(Map.of(
+                "message", "Поиск прошел успешно!",
+                "entity", professor
         ));
 
     }

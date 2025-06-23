@@ -1,5 +1,6 @@
 package com.psevdo00.projectExchange.controller;
 
+import com.psevdo00.projectExchange.DTO.request.CreateCommandDTO;
 import com.psevdo00.projectExchange.DTO.request.SelectProjectDTO;
 import com.psevdo00.projectExchange.entity.CommandEntity;
 import com.psevdo00.projectExchange.service.CommandService;
@@ -21,7 +22,7 @@ public class CommandController {
     }
 
     @PostMapping("/createCommand/{user_id}")
-    public ResponseEntity createCommand(@RequestBody CommandEntity command, @PathVariable Long user_id){
+    public ResponseEntity createCommand(@RequestBody CreateCommandDTO command, @PathVariable Long user_id){
 
         service.createCommand(command, user_id);
 

@@ -2,9 +2,9 @@ package com.psevdo00.projectExchange.enums;
 
 public enum TypeProjectEnum {
 
-    ORDER,
+    ORDERED,
     INITIATIVE,
-    DIGITAL_CAFEDRA,
-    CONTEST
+    DIGITAL,
+    COMPETITIVE
 
 }
